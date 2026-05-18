@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "../css/Auth.css";
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
   return (
     <div className="signup-holder">
       <div className="container">
@@ -25,7 +27,13 @@ const ResetPassword = () => {
           <input type="password" className="input-field" placeholder="Confirm new password" />
         </div>
 
-        <button className="btn-primary">Reset password</button>
+        <button
+          type="button"
+          className="btn-primary"
+          onClick={() => navigate("/login")}
+        >
+          Reset password
+        </button>
       </div>
       </div>
     </div>

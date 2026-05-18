@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "../css/Auth.css";
 
 const VerifyEmail = () => {
+  const navigate = useNavigate();
   return (
     <div className="signup-holder">
       <div className="container">
@@ -32,7 +34,11 @@ const VerifyEmail = () => {
             </div>
           </div>
 
-          <button className="continue-btn">
+          <button
+            type="button"
+            className="continue-btn"
+            onClick={() => navigate("/login")}
+          >
             Continue
           </button>
 

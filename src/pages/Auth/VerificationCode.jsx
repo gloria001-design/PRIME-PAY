@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "../css/Auth.css";
 
 const VerificationCode = () => {
+  const navigate = useNavigate();
   return (
     <div className="signup-holder">
       <div className="container">
@@ -27,7 +29,13 @@ const VerificationCode = () => {
             />
           </div>
 
-          <button className="btn-secondary">Verify</button>
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={() => navigate("/reset-password")}
+          >
+            Verify
+          </button>
           <a href="#" className="link-text">
             Resend verification code
           </a>

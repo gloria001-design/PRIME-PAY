@@ -1,6 +1,8 @@
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Auth.css";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   return (
     <div className="signup-holder">
       <div className="container">
@@ -54,9 +56,18 @@ const SignUp = () => {
               />
             </div>
 
-            <button className="signup-btn">
+            <button
+              type="button"
+              className="signup-btn"
+              onClick={() => navigate("/verify-email")}
+            >
               Sign up
             </button>
+
+            <p className="signup-text">
+              Already have an account?
+              <Link to="/login"> Log in </Link>
+            </p>
           </div>
         </div>
       </div>

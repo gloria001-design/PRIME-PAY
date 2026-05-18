@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "../css/Auth.css";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   return (
   <div className="signup-holder">
       <div className="container">
@@ -23,7 +25,13 @@ const ForgotPassword = () => {
   <input type="email" className="input-field" placeholder="Enter your email address" />
 </div>
 
-<button className="btn-primary">Send</button>
+<button
+  type="button"
+  className="btn-primary"
+  onClick={() => navigate("/verification-code")}
+>
+  Send
+</button>
 </div>
 </div>
   </div>

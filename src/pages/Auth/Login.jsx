@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../css/Auth.css";
 
 const Login = () => {
@@ -42,9 +43,9 @@ const Login = () => {
                 </span>
               </div>
 
-              <p className="forgot-password">
+              <Link to="/forgot-password" className="forgot-password">
                 Forgot password?
-              </p>
+              </Link>
             </div>
 
             <button className="login-btn">
@@ -53,7 +54,7 @@ const Login = () => {
 
             <p className="signup-text">
               Don’t have an account?
-              <span> Sign up </span>
+              <Link to="/signup"> Sign up </Link>
             </p>
           </div>
         </div>
