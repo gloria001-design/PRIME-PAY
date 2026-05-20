@@ -60,7 +60,7 @@
 }
 
 .Btn.btn-pickup {
-  background-color: #3b82a6;
+  background-color: #00A3AA;
   width: 220px;
   cursor: pointer;
   height: 10vh;
@@ -69,21 +69,23 @@
 }
 
 .btn-pickup:hover {
-  background-color: #138bcc;
+  background-color: #86abbe;
 }
 
 .Btn.btn-pricing {
-  background-color: #3b82a6;
+  background-color: white;
   width: 220px;
+  color: #1A1A1A;
   cursor: pointer;
+  border: #00A3AA 1px solid;
   height: 10vh;
-  box-shadow: 0 2px 4px rgba(59, 130, 166, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.2s ease;
 }
 
 .btn-pricing:hover {
-  /* background-color: rgba(0, 0, 0, 0.03); */
-  background-color: #138bcc;
+  background-color: rgba(0, 0, 0, 0.03);
+  background-color: #86abbe;
 }
 
 .hero-image-container {

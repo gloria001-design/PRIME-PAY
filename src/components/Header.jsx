@@ -43,11 +43,11 @@ const Header = () => {
            </div>
           <div className="header-actions">
             <NavLink to="/signup">
-              <Btn text="Sign up" className="signup-btn" />
+              <Btn text="Sign up" className="header-signup-btn" />
             </NavLink>
             
             <NavLink to="/pickup">
-              <Btn text="Book Now" className="header-btn" />
+              <Btn text="Book Now" className="header-book-btn" />
             </NavLink>
           </div>
        
