@@ -1,0 +1,131 @@
+.hero-section {
+  width: 100%;
+  background-color: #f6f5ee;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  padding: 60px 0;
+}
+
+.hero-blur-bg {
+  position: absolute;
+  /* top: -10%; */
+  width: 400px;
+  background: #90B8C880;
+  height: 400px;
+  background: radial-gradient(circle, rgba(193,211,235,0.7) 0%, rgba(246,245,238,0) 70%);
+  z-index: 1;
+  top: -30%;
+}
+
+.hero-container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  gap: 40px;
+}
+
+.hero-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-heading {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2b333e;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero-text {
+  font-size: 18px;
+  color: #1A1A1A;
+
+  line-height: 1.5;
+  margin-bottom: 35px;
+  max-width: 450px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.Btn.btn-pickup {
+  background-color: #3b82a6;
+  width: 220px;
+  cursor: pointer;
+  height: 10vh;
+  box-shadow: 0 2px 4px rgba(59, 130, 166, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.btn-pickup:hover {
+  background-color: #138bcc;
+}
+
+.Btn.btn-pricing {
+  background-color: #3b82a6;
+  width: 220px;
+  cursor: pointer;
+  height: 10vh;
+  box-shadow: 0 2px 4px rgba(59, 130, 166, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.btn-pricing:hover {
+  /* background-color: rgba(0, 0, 0, 0.03); */
+  background-color: #138bcc;
+}
+
+.hero-image-container {
+  width: 45%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-display-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .hero-content {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-image-container {
+    width: 100%;
+    justify-content: center;
+  }
+}

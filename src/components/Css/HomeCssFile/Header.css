@@ -1,0 +1,108 @@
+.main-header {
+  width: 100%;
+  background: #FFFFFF;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  position: sticky;
+}
+
+.header-container {
+  width: 90%;
+  height: 70px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 24px;
+  color: #00A3AA;
+  
+  && span{
+    color:#1A1A1A;
+
+  }
+}
+
+.header-nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-tab {
+  text-decoration: none;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #555555;
+  transition: color 0.2s ease;
+}
+
+.nav-tab:hover {
+  color: #4ca3a9;
+}
+
+.nav-tab.active {
+  color: #4ca3a9;
+  font-weight: 600;
+}
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  font-size: 16px;
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #0070f3;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+
+.header-btn {
+  background-color: #0070f3;
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  width: 97px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-booknow:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+  }
+}
