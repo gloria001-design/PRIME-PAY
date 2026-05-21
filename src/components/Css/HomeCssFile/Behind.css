@@ -1,0 +1,130 @@
+.behind-section {
+  width: 100%;
+  background: #FDFDFF;
+
+  padding: 100px 0;
+  position: relative;
+}
+
+.behind-container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8%;
+}
+
+.behind-images-layout {
+  width: 45%;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  height: 520px;
+}
+
+.behind-img-main-wrapper {
+  width: 80%;
+  height: 420px;
+  overflow: hidden;
+  border-top-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.behind-img-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.behind-img-sub-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 240px;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 12px;
+  border: 8px solid #f6f5ee;
+}
+
+.behind-img-sub {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.behind-content {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+}
+
+.behind-heading {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2b333e;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+
+.behind-text {
+  font-size: 16px;
+  color: #555c66;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.behind-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+}
+
+.behind-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2b333e;
+}
+
+.feature-check {
+  color: #3b82a6;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+@media (max-width: 992px) {
+  .behind-container {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .behind-images-layout {
+    width: 100%;
+    max-width: 500px;
+    height: 460px;
+    margin: 0 auto;
+  }
+
+  .behind-img-main-wrapper {
+    height: 360px;
+  }
+
+  .behind-img-sub-wrapper {
+    height: 200px;
+  }
+
+  .behind-content {
+    width: 100%;
+  }
+}
