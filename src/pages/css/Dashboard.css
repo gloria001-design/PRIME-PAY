@@ -1,0 +1,152 @@
+/* dashboard.css - NO inline styles, everything in CSS */
+
+.dashboard-layout {
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+/* Header Styles */
+.dashboard-header {
+  background: #fff;
+  padding: 0 24px;
+  border-bottom: 1px solid #f0f0f0;
+  height: auto;
+  line-height: normal;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px 0;
+}
+
+.logo-avatar {
+  background-color: #1677ff;
+}
+
+.logo-text h4 {
+  margin: 0;
+}
+
+.welcome-text {
+  text-align: right;
+}
+
+/* Content Styles */
+.dashboard-content {
+  padding: 24px;
+}
+
+.welcome-paragraph {
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+/* Stat Card Styles */
+.stat-card {
+  border-radius: 8px;
+}
+
+.stat-card .statistic-blue .ant-statistic-content {
+  color: #1677ff;
+}
+
+.stat-card .statistic-blue .ant-statistic-content .anticon {
+  color: #1677ff;
+}
+
+.stat-change {
+  margin-top: 8px;
+}
+
+.stat-change .ant-typography-success {
+  font-size: 12px;
+}
+
+.stat-change .anticon {
+  font-size: 12px;
+}
+
+/* Orders Card Styles */
+.orders-card {
+  margin-top: 24px;
+  border-radius: 8px;
+}
+
+.address-cell .anticon,
+.date-cell .anticon {
+  color: #bfbfbf;
+}
+
+.view-order-btn {
+  padding: 0;
+}
+
+/* Analytics Card Styles */
+.analytics-card {
+  margin-top: 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e6f7ff 0%, #f6ffed 100%);
+  border-color: #bae0ff;
+}
+
+.analytics-avatar {
+  background-color: #52c41a;
+}
+
+.analytics-card h5 {
+  margin: 0;
+}
+
+.analytics-text {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.highlight-green {
+  color: #52c41a;
+}
+
+.analytics-button {
+  width: 100%;
+}
+
+/* Footer Styles */
+.dashboard-footer {
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 0 16px;
+  }
+
+  .dashboard-content {
+    padding: 16px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .welcome-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .analytics-card .ant-row {
+    text-align: center;
+  }
+
+  .analytics-card .ant-space {
+    justify-content: center;
+  }
+}
