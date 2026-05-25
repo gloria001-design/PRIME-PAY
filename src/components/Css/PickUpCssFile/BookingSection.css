@@ -1,0 +1,217 @@
+.booking_container {
+  width: 100%;
+  padding: 60px 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  font-family: sans-serif;
+}
+
+.booking_content {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form_wrapper {
+  width: 53%;
+}
+
+.booking_card {
+  width: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.form_title {
+  font-size: 28px;
+  color: #111111;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form_subtitle {
+  font-size: 15px;
+  color: #555555;
+  margin-bottom: 25px;
+}
+
+.input_wrapper {
+  width: 100%;
+  margin-bottom: 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input_icon {
+  position: absolute;
+  left: 15px;
+  color: #7a8a9e;
+  font-size: 16px;
+}
+
+.input_wrapper input {
+  width: 100%;
+  padding: 14px 14px 14px 45px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.datetime_wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.datetime_wrapper label {
+  font-size: 16px;
+  color: #111111;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.datetime_wrapper input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #111111;
+  font-size: 15px;
+  outline: none;
+  background-color: transparent;
+}
+
+.textarea_wrapper {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.textarea_wrapper label {
+  display: block;
+  font-size: 16px;
+  color: #111111;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.textarea_wrapper label span {
+  color: #777777;
+  font-weight: normal;
+}
+
+.textarea_wrapper textarea {
+  width: 100%;
+  height: 110px;
+  padding: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  resize: none;
+}
+
+.booking_submit_btn {
+  width: 25%;
+  padding: 14px;
+  background-color: #00a0a5;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.security_note {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding-left: 5px;
+}
+
+.lock_icon {
+  color: #00bcd4;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.security_note span {
+  font-size: 14px;
+  color: #666666;
+}
+
+.info_wrapper {
+  width: 40%;
+  padding-top: 10px;
+}
+
+.feature_list {
+  margin-bottom: 40px;
+}
+
+.feature_list p {
+  font-size: 15px;
+  color: #222222;
+  margin: 15px 0%;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.blue_check {
+  color: #00bcd4;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.collage_container {
+  width: 100%;
+  position: relative;
+  height: 480px;
+}
+
+.collage_img {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.collage_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.img_top {
+  width: 50%;
+  height: 140px;
+  top: 0%;
+  left: 0%;
+  z-index: 1;
+}
+
+.img_middle {
+  width: 50%;
+  height: 160px;
+  top: 110px;
+  left: 30%;
+  z-index: 2;
+}
+
+.img_bottom {
+  width: 50%;
+  height: 180px;
+  top: 250px;
+  left: 45%;
+  z-index: 3;
+}

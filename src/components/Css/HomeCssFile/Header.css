@@ -3,7 +3,7 @@
   background: #FFFFFF;
   background-color: #ffffff;
   border-bottom: 1px solid #eeeeee;
-  position: sticky;
+  position:sticky;
 }
 
 .header-container {
@@ -85,7 +85,7 @@
 }
 
 
-.header-book-btn {
+.Btn.header-book-btn {
   background-color: #00A3AA;
   width: 120px;
   cursor: pointer;
@@ -93,7 +93,7 @@
   box-shadow: 0 2px 4px rgba(0, 163, 170, 0.2);
   transition: background-color 0.2s ease;
 }
-.header-signup-btn{
+.Btn.header-signup-btn{
   background-color: white;
   width: 120px;
   cursor: pointer;
@@ -102,7 +102,7 @@
   box-shadow: 0 2px 4px rgba(0, 163, 170, 0.2);
   transition: background-color 0.2s ease;
 }
-.header-signup-btn:hover {
+.Btn.header-signup-btn:hover {
   background-color: #008d94;
 }
 
@@ -111,7 +111,7 @@
 }
 
 @media (max-width: 768px) {
-  .header-nav {
+  .header-actions {
     display: none;
   }
 }
