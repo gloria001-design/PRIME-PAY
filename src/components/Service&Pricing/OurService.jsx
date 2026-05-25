@@ -31,7 +31,7 @@ const Service = () => {
             title={item.title}
             description={item.description}
             showBtn={true}
-            onClick={() => navigate("/pickup")} // <-- IT IS ALREADY ACTIVE HERE!
+            onClick={() => navigate("/pickup")}
           />
         ))}
       </div>

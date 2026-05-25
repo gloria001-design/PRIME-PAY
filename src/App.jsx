@@ -40,8 +40,8 @@ const App = () => {
           <Route path="dashboard" element={<DashboardOverview />} />
           <Route path="orders" element={<OrdersPage />} />
           <Route path="customers" element={<Customers />} />
-          <Route path="analytics" element={<div style={{ padding: "20px" }}><h2>Analytics Content Placeholder</h2></div>} />
-          <Route path="settings" element={<div style={{ padding: "20px" }}><h2>Settings Content Placeholder</h2></div>} />
+          <Route path="analytics" element={<div style={{ padding: "20px" }}><h2>Reviews</h2></div>} />
+          <Route path="settings" element={<div style={{ padding: "20px" }}><h2>Settings</h2></div>} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
