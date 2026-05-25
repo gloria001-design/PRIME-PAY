@@ -1,8 +1,10 @@
 import React from 'react';
 import "../Css/ServiceCssFile/Heero.css";
 import Btn from '../Props/Btn';
-
+import { useNavigate } from "react-router-dom";
 const Hero = () => {
+   const navigate = useNavigate();
+
   return (
     <section className="heero-container">
       <div className="heero-content">
@@ -12,7 +14,7 @@ const Hero = () => {
         <p className="heero-description">
           Quality laundry service at affordable, <br /> transparent prices.
         </p>
-        <Btn text="Book a Pickup" className="heero-btn" />  
+        <Btn text="Book a Pickup" className="heero-btn"  onClick={() => navigate("/pickup")} />  
       </div>
     </section>
   );
