@@ -1,0 +1,491 @@
+/* Precise Layout Resets */
+.primepress_container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #333333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Navbar Layout */
+.pp_navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 6%;
+  background: #ffffff;
+}
+
+.pp_logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00a896;
+}
+
+.logo_icon_teal {
+  color: #00a896;
+}
+
+.logo_sub {
+  font-weight: 400;
+  color: #555;
+  margin-left: 4px;
+}
+
+.pp_nav_menu {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pp_nav_menu a {
+  text-decoration: none;
+  color: #4a5568;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+}
+
+.pp_nav_menu a.pp_active_nav {
+  color: #00a896;
+  border-bottom: 2px solid #00a896;
+  padding-bottom: 4px;
+}
+
+.pp_btn_book {
+  background-color: #00a896;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Hero Section Layout */
+.pp_hero_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 6%;
+  background: linear-gradient(135deg, #f0fafb 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle corner overlay accent from your top left */
+.pp_hero_section::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,168,150,0.12) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pp_hero_left {
+  max-width: 45%;
+}
+
+.pp_hero_title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #111c24;
+  margin: 0 0 16px 0;
+}
+
+.pp_hero_subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.pp_hero_bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.teal_check {
+  color: #00a896;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.pp_hero_right {
+  width: 48%;
+}
+
+.pp_hero_img_frame {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.pp_hero_img_frame img {
+  width: 100%;
+  display: block;
+}
+
+/* Main Form / Workspace grid split */
+.pp_workspace {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 6%;
+  gap: 40px;
+  background-color: #ffffff;
+}
+
+.pp_form_column {
+  flex: 1.1;
+}
+
+.pp_form_card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.pp_card_title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111c24;
+  margin: 0 0 4px 0;
+}
+
+.pp_card_sub {
+  color: #718096;
+  font-size: 0.88rem;
+  margin: 0 0 24px 0;
+}
+
+.pp_native_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Custom styled form borders with precise tiny icon space */
+.pp_input_wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 0 12px;
+  background: #ffffff;
+}
+
+.pp_field_icon {
+  color: #94a3b8;
+  margin-right: 10px;
+  font-size: 0.95rem;
+}
+
+.pp_input_wrapper input {
+  width: 100%;
+  height: 42px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+/* Matches your exact underline date look */
+.pp_input_inline_row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.pp_input_inline_row label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.pp_line_input {
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  background: transparent;
+}
+
+.pp_textarea_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.pp_area_label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.pp_area_label span {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.pp_textarea_wrapper textarea {
+  width: 100%;
+  height: 90px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 12px;
+  box-sizing: border-box;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.pp_submit_btn {
+  background-color: #00a896;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 120px;
+}
+
+.pp_security_footer {
+  color: #718096;
+  font-size: 0.85rem;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Floating Image Layout right column */
+.pp_collage_column {
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pp_collage_bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.blue_check {
+  color: #3182ce;
+  margin-right: 6px;
+}
+
+.pp_stacked_collage {
+  position: relative;
+  width: 100%;
+  height: 440px;
+}
+
+.pp_frame {
+  position: absolute;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  background: #ffffff;
+}
+
+.pp_frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Update these classes in your BookingPage.css --- */
+
+.frame_1 {
+  width: 240px;
+  height: 180px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.frame_2 {
+  width: 220px;
+  height: 190px;
+  top: 60px;    /* Moved down slightly less to balanced spacing */
+  left: 160px;  /* Pushed further right (increased from 90px) */
+  z-index: 2;
+  border: 4px solid #ffffff;
+}
+
+.frame_3 {
+  width: 200px;
+  height: 220px;
+  top: 160px;   /* Lifted up slightly to prevent stretching too far down */
+  left: 310px;  /* Pushed significantly further right (increased from 150px) */
+  z-index: 3;
+  border: 4px solid #ffffff;
+}
+
+/* Bottom Highlight ribbon cards strip */
+.pp_highlight_ribbon {
+  background: linear-gradient(to bottom, #ffffff 40%, #1e293b 40%);
+  padding: 0 6%;
+}
+
+.pp_highlight_row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.pp_h_card {
+  /* background: #ffffff; */
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.pp_h_icon_container {
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.blue_variant {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.teal_variant {
+  background: #f0fdfa;
+  color: #0d9488;
+}
+
+.pp_h_info h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.pp_h_info p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.pp_ribbon_security {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* Exact matching slate dark grey footer */
+.pp_footer {
+  background-color: #1e293b; 
+  color: #94a3b8;
+  padding: 48px 6% 32px 6%;
+  border-top: 1px solid #334155;
+}
+
+.pp_footer_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+}
+
+.pp_footer_block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pp_footer_block h4 {
+  color: #f8fafc;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.5px;
+}
+
+.pp_footer_block a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.pp_footer_block a:hover {
+  color: #ffffff;
+}
+
+.pp_footer_block p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.pp_social_row {
+  display: flex;
+  gap: 12px;
+}
+
+.pp_social_btn {
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+.pp_social_btn:hover {
+  color: #ffffff;
+}
+
+/* Responsiveness overrides configuration */
+@media (max-width: 900px) {
+  .pp_hero_section, .pp_workspace, .pp_highlight_row {
+    flex-direction: column;
+  }
+  .pp_hero_left, .pp_hero_right, .pp_form_column, .pp_collage_column {
+    max-width: 100%;
+    width: 100%;
+  }
+  .pp_stacked_collage {
+    height: 260px;
+  }
+}
