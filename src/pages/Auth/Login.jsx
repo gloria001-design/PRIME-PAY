@@ -51,10 +51,9 @@ const Login = () => {
               </Link>
             </div>
 
-            <button className="login-btn" onClick={() => navigate("/home")}>
+            <button className="login-btn" onClick={() => navigate("/admin/dashboard")}>
               Log in
             </button>
-
             <p className="signup-text">
               Don’t have an account?
               <Link to="/signup"> Sign up </Link>

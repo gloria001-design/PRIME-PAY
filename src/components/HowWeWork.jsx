@@ -1,12 +1,14 @@
 import React from 'react'
 import Cards from './Props/Cards'
 import '../components/Css/HomeCssFile/HowWeWork.css'
-
 import icon1 from '../assets/fluent-emoji-flat_calendar.png'
 import icon2 from '../assets/twemoji_oncoming-bus.png'
 import icon3 from '../assets/icon-park_washing-machine-one.png'
+import Btn from './Props/Btn'
+import { useNavigate } from 'react-router-dom'
 
 const HowWeWork = () => {
+  const navigate = useNavigate();
   const steps = [
     {
       id: 1,
@@ -41,7 +43,7 @@ const HowWeWork = () => {
             Laundry Made Easy With Our <br />
             Simple Process
           </p>
-          <button className="btn-schedule">Schedule Now</button>
+          <Btn text="Schedule Now" className="btn-schedule" onClick={() => navigate('/pickup')} />
         </div>
 
         <div className="work-right-cards">
