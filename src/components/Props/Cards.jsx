@@ -4,7 +4,7 @@ import Btn from './Btn'
 
 const Cards = ({ img, title, description, customClass, showBtn, onClick }) => {
   return (
-    <div className={`work-card ${customClass || ''}`}>
+    <div className={`work-card ${customClass || ""}`}>
       <div className="work-card-icon-box">
         <img src={img} alt="" />
       </div>
@@ -18,7 +18,7 @@ const Cards = ({ img, title, description, customClass, showBtn, onClick }) => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Cards
+export default Cards;
