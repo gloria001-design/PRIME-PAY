@@ -28,7 +28,7 @@ const Service = () => {
             img={item.img}
             title={item.title}
             description={item.description}
-            showBtn={true}
+            showBtn={true }
           />
         ))}
     
