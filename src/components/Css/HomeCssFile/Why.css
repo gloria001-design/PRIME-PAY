@@ -1,0 +1,71 @@
+.why-section {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+}
+
+.why-container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.why-header-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.why-main-heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2b333e;
+  white-space: nowrap;
+}
+
+.why-divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #dee1e5;
+  
+}
+
+.why-cards-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.why-cards-grid .work-card {
+  width: 23%;
+  box-shadow:rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  border: none;
+  background: #FFFFFF;
+  height: 30vh;
+}
+
+@media (max-width: 992px) {
+  .why-cards-grid {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .why-cards-grid .work-card {
+    width: 48%;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-cards-grid .work-card {
+    width: 100%;
+  }
+}

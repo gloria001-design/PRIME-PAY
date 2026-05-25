@@ -1,216 +1,301 @@
 // AnalyticsDashboard.jsx
 import "./AnalyticsDashboard.css";
-// import "../css/AnalyticsDashboard.css"
-
-const revenueData = [
-  { month: "Jan", desktop: 45, mobile: 35 },
-  { month: "Feb", desktop: 60, mobile: 40 },
-  { month: "Mar", desktop: 55, mobile: 38 },
-  { month: "Apr", desktop: 70, mobile: 45 },
-  { month: "May", desktop: 65, mobile: 42 },
-  { month: "Jun", desktop: 80, mobile: 50 },
-];
-
-const topServices = [
-  {
-    title: "Web & Print",
-    percent: 63,
-    color: "#3b82f6",
-  },
-  {
-    title: "Dry Cleaning",
-    percent: 85,
-    color: "#10b981",
-  },
-  {
-    title: "Home Improvement",
-    percent: 70,
-    color: "#8b5cf6",
-  },
-];
-
+import {
+  FiGrid,
+  FiClipboard,
+  FiUsers,
+  FiBarChart2,
+  FiSettings,
+  FiSearch,
+  FiBell,
+  FiCalendar,
+  FiLogOut,
+} from "react-icons/fi";
 
 const AnalyticsDashboard = () => {
   return (
     <div className="dashboard">
       {/* SIDEBAR */}
       <aside className="sidebar">
-        <div className="logo">
-          <div className="logo-circle"></div>
-          <div>
-            <h2>PrimeAdmin</h2>
-            <p>v2.0</p>
+        <div>
+          <div className="logo">
+          <img
+            src="https://i.postimg.cc/BZzp3z4t/Frame-1000006450.png"
+            alt="PrimePress Logo"
+          />
+         
           </div>
+
+          <nav className="menu">
+            <div className="menu-item">
+              <FiGrid />
+              <span>Dashboard</span>
+            </div>
+
+            <div className="menu-item">
+              <FiClipboard />
+              <span>Orders</span>
+            </div>
+
+            <div className="menu-item">
+              <FiUsers />
+              <span>Customers</span>
+            </div>
+
+            <div className="menu-item active">
+              <FiBarChart2 />
+              <span>Review Analytics</span>
+            </div>
+
+            <div className="menu-item">
+              <FiSettings />
+              <span>Settings</span>
+            </div>
+          </nav>
         </div>
 
-        <nav className="nav-links">
-          <a href="/">Dashboard</a>
-          <a href="/">Orders</a>
-          <a href="/" className="active">
-            Analytics
-          </a>
-          <a href="/">Settings</a>
-        </nav>
-
-        <button className="logout-btn">Logout</button>
+        <div className="logout">
+          <FiLogOut />
+          <span>Logout</span>
+        </div>
       </aside>
 
-      {/* MAIN */}
-      <main className="main-content">
-        {/* TOPBAR */}
-        <div className="topbar">
-          <div>
-            <h1>Analytics & Performance</h1>
-            <p>Track your business insights</p>
+      {/* MAIN CONTENT */}
+      <main className="main">
+        {/* HEADER */}
+        <header className="topbar">
+          <div className="search-box">
+            <FiSearch />
+            <input type="text" placeholder="Search reports..." />
           </div>
 
-          <button className="export-btn">This Period</button>
+          <div className="topbar-right">
+            <FiBell className="bell" />
+
+            <div className="admin">
+              <div>
+                <h4>Admin User</h4>
+                <p>Online Manager</p>
+              </div>
+
+              <img
+                src="https://i.pravatar.cc/40"
+                alt="admin"
+              />
+            </div>
+          </div>
+        </header>
+
+        {/* PAGE TITLE */}
+        <div className="title-section">
+          <div>
+            <h1>Analytics & Performance</h1>
+          </div>
+
+          <button>This Week</button>
         </div>
 
         {/* STATS */}
         <section className="stats-grid">
           <div className="stat-card">
-            <h4>Avg Response Time</h4>
+            <div className="stat-top">
+              <span>Avg. Processing Time</span>
+              <FiCalendar />
+            </div>
+
             <h2>2.4 Days</h2>
           </div>
 
           <div className="stat-card">
-            <h4>Lead Conversion</h4>
+            <div className="stat-top">
+              <span>Daily Capacity</span>
+              <FiCalendar />
+            </div>
+
             <h2>84%</h2>
           </div>
 
           <div className="stat-card">
-            <h4>Active Projects</h4>
+            <div className="stat-top">
+              <span>Expected Orders</span>
+            </div>
+
             <h2>7 Active</h2>
+            <p>Requires priority washing</p>
           </div>
         </section>
 
-        {/* CHARTS */}
-        <section className="charts-grid">
-          {/* BAR CHART */}
+        {/* CONTENT GRID */}
+        <section className="content-grid">
+          {/* REVENUE CHART */}
           <div className="card revenue-card">
             <div className="card-header">
               <h3>Revenue Overview</h3>
-              <p>Monthly revenue comparison</p>
+              <p>Monthly current vs. Previous period</p>
             </div>
 
-            <div className="bar-chart">
-              {revenueData.map((item, index) => (
-                <div className="bar-group" key={index}>
-                  <div className="bars">
-                    <div
-                      className="bar desktop"
-                      style={{ height: `${item.desktop}%` }}
-                    ></div>
+            <div className="chart">
+              <div className="bars">
+                {[65, 90, 80, 95, 100, 110].map((height, i) => (
+                  <div className="month" key={i}>
+                    <div className="bar-group">
+                      <div
+                        className="bar previous"
+                        style={{ height: `${height - 10}px` }}
+                      ></div>
 
-                    <div
-                      className="bar mobile"
-                      style={{ height: `${item.mobile}%` }}
-                    ></div>
+                      <div
+                        className="bar current"
+                        style={{ height: `${height}px` }}
+                      ></div>
+                    </div>
+
+                    <span>
+                      {["Jan", "Feb", "Mar", "Apr", "May", "Jun"][i]}
+                    </span>
                   </div>
-
-                  <span>{item.month}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="chart-legend">
-              <div>
-                <span className="legend desktop-color"></span>
-                Desktop
+                ))}
               </div>
 
-              <div>
-                <span className="legend mobile-color"></span>
-                Mobile
+              <div className="legend">
+                <div>
+                  <span className="dot current-dot"></span>
+                  Current
+                </div>
+
+                <div>
+                  <span className="dot previous-dot"></span>
+                  Previous
+                </div>
               </div>
             </div>
           </div>
 
-          {/* DONUT */}
-          <div className="card donut-card">
+          {/* DONUT CHART */}
+          <div className="card status-card">
             <div className="card-header">
               <h3>Order Status</h3>
-              <p>Live distribution</p>
+              <p>Live distribution of active jobs</p>
             </div>
 
             <div className="donut-wrapper">
               <div className="donut-chart"></div>
             </div>
 
-            <div className="donut-legend">
+            <div className="status-list">
               <div>
-                <span className="dot pending"></span> Pending
+                <span className="status-dot red"></span>
+                New Requests
               </div>
 
-              <div>
-                <span className="dot progress"></span> Processing
-              </div>
+              <div>15%</div>
 
               <div>
-                <span className="dot shipped"></span> Shipped
+                <span className="status-dot blue"></span>
+                Picked Up
               </div>
 
+              <div>25%</div>
+
               <div>
-                <span className="dot delivered"></span> Delivered
+                <span className="status-dot yellow"></span>
+                Washing
               </div>
+
+              <div>30%</div>
+
+              <div>
+                <span className="status-dot green"></span>
+                Ready
+              </div>
+
+              <div>15%</div>
+
+              <div>
+                <span className="status-dot gray"></span>
+                Delivered
+              </div>
+
+              <div>10%</div>
             </div>
           </div>
-        </section>
 
-        {/* BOTTOM */}
-        <section className="bottom-grid">
-          {/* SERVICES */}
+          {/* TOP SERVICES */}
           <div className="card services-card">
             <div className="card-header">
               <h3>Top Services</h3>
-              <p>Most requested services</p>
+              <p>Most requested laundry types</p>
             </div>
 
-            <div className="services-list">
-              {topServices.map((service, index) => (
-                <div className="service-item" key={index}>
-                  <div className="service-top">
-                    <span>{service.title}</span>
-                    <span>{service.percent}%</span>
-                  </div>
-
-                  <div className="progress-bar">
-                    <div
-                      className="progress-fill"
-                      style={{
-                        width: `${service.percent}%`,
-                        background: service.color,
-                      }}
-                    ></div>
-                  </div>
+            {[
+              {
+                name: "Wash & Fold",
+                value: 42,
+                orders: 100,
+              },
+              {
+                name: "Dry Cleaning",
+                value: 38,
+                orders: 62,
+              },
+              {
+                name: "Ironing",
+                value: 9,
+                orders: 50,
+              },
+              {
+                name: "Stain Removal",
+                value: 11,
+                orders: 20,
+              },
+            ].map((item, index) => (
+              <div className="service" key={index}>
+                <div className="service-top">
+                  <h4>{item.name}</h4>
+                  <span>{item.value}%</span>
                 </div>
-              ))}
-            </div>
+
+                <p>{item.orders} orders processed</p>
+
+                <div className="progress">
+                  <div
+                    className="progress-fill"
+                    style={{ width: `${item.value}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* INSIGHTS */}
           <div className="card insights-card">
             <div className="card-header">
               <h3>Weekly Insights</h3>
-              <p>Performance recommendations</p>
+              <p>Synthesized operational performance</p>
             </div>
 
-            <div className="insight-box">
-              <h4>Processing Volume</h4>
-              <p>
-                Your team handled 18% more requests compared to last week.
-              </p>
-            </div>
+            <div className="insight-boxes">
+              <div className="insight">
+                <h4>Processing Milestone</h4>
+                <p>
+                  Successfully reduced average wash time by 18% through
+                  optimization.
+                </p>
+              </div>
 
-            <div className="insight-box">
-              <h4>Capacity Alert</h4>
-              <p>
-                You may need additional resources during peak hours this week.
-              </p>
+              <div className="insight">
+                <h4>Capacity Alert</h4>
+                <p>
+                  Dryer 3 is showing high use. Maintenance scheduled.
+                </p>
+              </div>
             </div>
           </div>
         </section>
+
+        <footer className="footer">
+          © 2026 PrimePress Laundry Admin Dashboard • Quality Service Tracking
+        </footer>
       </main>
     </div>
   );
