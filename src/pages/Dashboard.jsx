@@ -15,8 +15,10 @@ import {
   FiClipboard,
   FiMoreVertical,
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate=useNavigate()
   return (
     <div className="dashboard">
       {/* SIDEBAR */}
@@ -45,7 +47,7 @@ const Dashboard = () => {
               <span>Customers</span>
             </div>
 
-            <div className="menu-item">
+            <div className="menu-item"  onClick={() => navigate("/analysis")}>
               <FiBarChart2 />
               <span>Review Analytics</span>
             </div>

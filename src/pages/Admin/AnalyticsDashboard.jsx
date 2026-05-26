@@ -11,12 +11,14 @@ import {
   FiCalendar,
   FiLogOut,
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const AnalyticsDashboard = () => {
+  const navigate=useNavigate()
   return (
     <div className="dashboard">
       {/* SIDEBAR */}
-      <aside className="sidebar">
+      {/* <aside className="sidebar">
         <div>
           <div className="logo">
           <img
@@ -27,7 +29,7 @@ const AnalyticsDashboard = () => {
           </div>
 
           <nav className="menu">
-            <div className="menu-item">
+            <div className="menu-item" onClick={() => navigate("/dashboard")}>
               <FiGrid />
               <span>Dashboard</span>
             </div>
@@ -58,12 +60,12 @@ const AnalyticsDashboard = () => {
           <FiLogOut />
           <span>Logout</span>
         </div>
-      </aside>
+      </aside> */}
 
       {/* MAIN CONTENT */}
       <main className="main">
         {/* HEADER */}
-        <header className="topbar">
+        {/* <header className="topbar">
           <div className="search-box">
             <FiSearch />
             <input type="text" placeholder="Search reports..." />
@@ -84,9 +86,8 @@ const AnalyticsDashboard = () => {
               />
             </div>
           </div>
-        </header>
+        </header> */}
 
-        {/* PAGE TITLE */}
         <div className="title-section">
           <div>
             <h1>Analytics & Performance</h1>
@@ -95,7 +96,6 @@ const AnalyticsDashboard = () => {
           <button>This Week</button>
         </div>
 
-        {/* STATS */}
         <section className="stats-grid">
           <div className="stat-card">
             <div className="stat-top">
@@ -125,9 +125,9 @@ const AnalyticsDashboard = () => {
           </div>
         </section>
 
-        {/* CONTENT GRID */}
+   
         <section className="content-grid">
-          {/* REVENUE CHART */}
+
           <div className="card revenue-card">
             <div className="card-header">
               <h3>Revenue Overview</h3>
@@ -171,7 +171,7 @@ const AnalyticsDashboard = () => {
             </div>
           </div>
 
-          {/* DONUT CHART */}
+
           <div className="card status-card">
             <div className="card-header">
               <h3>Order Status</h3>
@@ -220,7 +220,7 @@ const AnalyticsDashboard = () => {
             </div>
           </div>
 
-          {/* TOP SERVICES */}
+       
           <div className="card services-card">
             <div className="card-header">
               <h3>Top Services</h3>
@@ -267,7 +267,7 @@ const AnalyticsDashboard = () => {
             ))}
           </div>
 
-          {/* INSIGHTS */}
+
           <div className="card insights-card">
             <div className="card-header">
               <h3>Weekly Insights</h3>

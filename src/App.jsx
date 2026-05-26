@@ -11,11 +11,12 @@ import VerifyEmail from './pages/Auth/VerifyEmail';
 import VerificationCode from './pages/Auth/VerificationCode';
 import ResetPassword from './pages/Auth/ResetPassword';
 import { ScrollToTop } from './components/HighFunction';
-
+import AnalyticsDashboard from './pages/Admin/AnalyticsDashboard';
 import AdminLayout from "./pages/Admin/AdminLayout"; 
 import DashboardOverview from "./pages/Admin/AdminDashboard"; 
 import OrdersPage from "./pages/Admin/Orders";
 import Customers from "./pages/Admin/Customers";
+import NotFoundPage from "./pages/404Page";
 
 const App = () => {
   return (
@@ -40,11 +41,11 @@ const App = () => {
           <Route path="dashboard" element={<DashboardOverview />} />
           <Route path="orders" element={<OrdersPage />} />
           <Route path="customers" element={<Customers />} />
-          <Route path="analytics" element={<div style={{ padding: "20px" }}><h2>Reviews</h2></div>} />
-          <Route path="settings" element={<div style={{ padding: "20px" }}><h2>Settings</h2></div>} />
+          <Route path="analytics" element={<AnalyticsDashboard />} />
+          <Route path="settings" element={<div style={{ padding: "20px" }}><h2>Settings Content Placeholder</h2></div>} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
