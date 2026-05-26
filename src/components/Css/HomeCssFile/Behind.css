@@ -49,9 +49,8 @@
   overflow: hidden;
   border-top-left-radius: 12px;
   border-bottom-right-radius: 40px;
-  border-top-right-radius: 40px;
+  /* border-top-right-radius: 40px; */
   border-bottom-left-radius: 12px;
-  border: 8px solid #f6f5ee;
 }
 
 .behind-img-sub {
