@@ -1,11 +1,4 @@
-/* AnalyticsDashboard.css */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
 
 body {
   background: #efefef;
@@ -17,7 +10,7 @@ body {
   background: #f7f7f7;
 }
 
-/* SIDEBAR */
+
 
 .sidebar {
   width: 240px;
@@ -426,44 +419,4 @@ body {
   font-size: 12px;
 }
 
-/* RESPONSIVE */
 
-@media (max-width: 900px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 700px) {
-  .dashboard {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-  }
-
-  .topbar {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .title-section {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-  }
-
-  .insight-boxes {
-    flex-direction: column;
-  }
-}

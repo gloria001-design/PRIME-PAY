@@ -11,8 +11,10 @@ import {
   FiCalendar,
   FiLogOut,
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const AnalyticsDashboard = () => {
+  const navigate=useNavigate()
   return (
     <div className="dashboard">
       {/* SIDEBAR */}
@@ -27,7 +29,7 @@ const AnalyticsDashboard = () => {
           </div>
 
           <nav className="menu">
-            <div className="menu-item">
+            <div className="menu-item" onClick={() => navigate("/dashboard")}>
               <FiGrid />
               <span>Dashboard</span>
             </div>

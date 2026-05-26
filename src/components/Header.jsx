@@ -21,12 +21,6 @@ const Header = () => {
                 className={({ isActive }) => isActive ? "nav-tab active" : "nav-tab"}
               >
                 Home
-
-
-
-
-
-                
               </NavLink>
             </li>
             <li className="nav-item">

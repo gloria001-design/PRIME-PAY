@@ -51,7 +51,7 @@ const Login = () => {
               </Link>
             </div>
 
-            <button className="login-btn" onClick={() => navigate("/home")}>
+            <button className="login-btn" onClick={() => navigate("/dashboard")}>
               Log in
             </button>
 
