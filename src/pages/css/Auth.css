@@ -414,8 +414,6 @@ input::placeholder {
   cursor: default;
   margin-top: 10px;
 }
-
-/* ===== LINK STYLES ===== */
 .link-text {
   display: block;
   text-align: center;
@@ -427,4 +425,71 @@ input::placeholder {
 
 .link-text:hover {
   text-decoration: underline;
+}
+.password-field-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field-wrap input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.error-text {
+  color: red;
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.requirements-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 15px;
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.requirement-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.requirement-item.full-width {
+  grid-column: span 2; 
+}
+
+.requirement-item.valid {
+  color: #2e7d32;
+}
+
+.requirement-item.valid svg {
+  color: #2e7d32;
+}
+
+.requirement-item.invalid {
+  color: #757575;
+}
+
+.requirement-item.invalid svg {
+  color: #bdbdbd;
 }

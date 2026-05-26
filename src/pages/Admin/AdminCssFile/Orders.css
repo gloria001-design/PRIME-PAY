@@ -43,7 +43,7 @@
   font-size: 0.75rem;
 }
 
-/* --- TOP FILTER CAROUSEL BAR --- */
+
 .filter_tabs_scroll {
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@
   color: #ffffff;
 }
 
-/* --- MAIN TABLE BLOCK CARD --- */
+
 .orders_main_card {
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
@@ -172,7 +172,7 @@
   color: #6b7280;
 }
 
-/* --- CORE INTERFACE DATA TABLE --- */
+
 .table_scroll_container {
   width: 100%;
   overflow-x: auto;
@@ -239,7 +239,6 @@
   color: #4b5563;
 }
 
-/* --- CLEAN PILL LABELS MATCHING DESIGN MOCKUP --- */
 .status_pill_badge {
   display: inline-flex;
   align-items: center;
@@ -291,7 +290,7 @@
   padding: 4px;
 }
 
-/* --- BOTTOM PAGINATION PANEL --- */
+
 .table_pagination_footer {
   padding: 16px 24px;
   display: flex;
