@@ -11,7 +11,7 @@ import VerifyEmail from './pages/Auth/VerifyEmail';
 import VerificationCode from './pages/Auth/VerificationCode';
 import ResetPassword from './pages/Auth/ResetPassword';
 import { ScrollToTop } from './components/HighFunction';
-
+import AnalyticsDashboard from './pages/Admin/AnalyticsDashboard';
 import AdminLayout from "./pages/Admin/AdminLayout"; 
 import DashboardOverview from "./pages/Admin/AdminDashboard"; 
 import OrdersPage from "./pages/Admin/Orders";
@@ -40,7 +40,7 @@ const App = () => {
           <Route path="dashboard" element={<DashboardOverview />} />
           <Route path="orders" element={<OrdersPage />} />
           <Route path="customers" element={<Customers />} />
-          <Route path="analytics" element={<div style={{ padding: "20px" }}><h2>Analytics Content Placeholder</h2></div>} />
+          <Route path="analytics" element={<AnalyticsDashboard />} />
           <Route path="settings" element={<div style={{ padding: "20px" }}><h2>Settings Content Placeholder</h2></div>} />
         </Route>
 
