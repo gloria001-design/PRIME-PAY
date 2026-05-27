@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash, FaCheckCircle, FaRegCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
+import axios from "axios";
 import "../css/Auth.css";
+import { EmailRegex, PasswordRequirements, BaseURL } from "../../lib/HighFunction";
 
 const SignUp = () => {
-  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [showText, setShowText] = useState(false);
+  
   const [Passmeet, setPassmeet] = useState({
     length: false,
     upper: false,
@@ -20,12 +23,10 @@ const SignUp = () => {
 
   const [userInfo, setUserInfo] = useState({
     fullName: "",
-    emailAddress: "",
+    email: "",
     password: "",
     confirmPassword: "" 
   });
-  
-  const EmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const [UsernameErrorMsg, setUsernameErrorMsg] = useState({ err: false, name: "", msg: "" });
   const [EmailerrorMsg, setEmailErrorMsg] = useState({ err: false, name: "", msg: "" });
@@ -43,11 +44,11 @@ const SignUp = () => {
 
   const HoldEmail = (e) => {
     const NewEmail = e.target.value;
-    setUserInfo({ ...userInfo, emailAddress: NewEmail });
+    setUserInfo({ ...userInfo, email: NewEmail });
     if (NewEmail.trim() === "") {
-      setEmailErrorMsg({ err: true, name: "emailAddress", msg: "You must add an email" });
+      setEmailErrorMsg({ err: true, name: "email", msg: "You must add an email" });
     } else if (!EmailRegex.test(NewEmail)) {
-      setEmailErrorMsg({ err: true, name: "emailAddress", msg: "Please enter a valid Email" });
+      setEmailErrorMsg({ err: true, name: "email", msg: "Please enter a valid Email" });
     } else {
       setEmailErrorMsg({ err: false, name: "", msg: "" });
     } 
@@ -56,14 +57,7 @@ const SignUp = () => {
   const HoldPassWord = (e) => {
     const NewPass = e.target.value;
     setUserInfo({ ...userInfo, password: NewPass });
-
-    setPassmeet({
-      length: NewPass.length >= 8,
-      upper: /[A-Z]/.test(NewPass),
-      lower: /[a-z]/.test(NewPass),
-      number: /\d/.test(NewPass),
-      special: /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(NewPass),
-    });
+    setPassmeet(PasswordRequirements(NewPass));
   };
 
   const HoldConfirmPassword = (e) => {
@@ -79,17 +73,61 @@ const SignUp = () => {
     }
   };
 
-  const handleValidationAndSubmit = (e) => {
+  const handleValidationAndSubmit = async (e) => {
     e.preventDefault();
 
     const allConditionsMet = Passmeet.length && Passmeet.upper && Passmeet.lower && Passmeet.number && Passmeet.special;
-    const fieldsEmpty = !userInfo.fullName || !userInfo.emailAddress || !userInfo.password || !userInfo.confirmPassword;
+    const fieldsEmpty = !userInfo.fullName || !userInfo.email || !userInfo.password || !userInfo.confirmPassword;
     const hasOtherErrors = UsernameErrorMsg.err || EmailerrorMsg.err || ConfirmPassworderrorMsg.err;
 
     if (!allConditionsMet || fieldsEmpty || hasOtherErrors) {
-      alert("Please fill in all fields correctly.");
+      Swal.fire({
+        title: "Error",
+        text: "Please fill in all fields correctly.",
+        icon: "error",
+        confirmButtonColor: "#008d94",
+        confirmButtonText: "Back to Sign Up",
+        confirmButtonWidth: "150px"  
+      });
     } else {
-      navigate("/verify-email");
+      try {
+        setIsLoading(true);
+
+        const backendData = {
+          fullName: userInfo.fullName,
+          email: userInfo.email,
+          password: userInfo.password
+        };
+
+        const response = await axios.post(`${BaseURL}admin`, backendData);
+        // console.log("res:", response);
+
+        Swal.fire({
+          title: "Success",
+          text: "Registration successful!",
+          icon: "success",
+          confirmButtonColor: "#008d94"
+        });
+
+        setUserInfo({
+          fullName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+
+      } catch (error) {
+        console.log("err", error.response?.data);
+        
+        Swal.fire({
+          title: "Registration Failed",
+          text: error.response?.data?.message,
+          icon: "error",
+          confirmButtonColor: "#008d94"
+        });
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -127,11 +165,11 @@ const SignUp = () => {
                 type="email"
                 id="email"
                 placeholder="Email"
-                value={userInfo.emailAddress}
+                value={userInfo.email}
                 onChange={HoldEmail}
               />
               <span className="error-text">
-                {EmailerrorMsg.msg && EmailerrorMsg.name === 'emailAddress' ? EmailerrorMsg.msg : ''}
+                {EmailerrorMsg.msg && EmailerrorMsg.name === 'email' ? EmailerrorMsg.msg : ''}
               </span>
             </div>
 
@@ -212,8 +250,9 @@ const SignUp = () => {
             <button
               type="submit"
               className="signup-btn"
+              disabled={isLoading}
             >
-              Sign up
+              {isLoading ? "Signing up..." : "Sign up"}
             </button>
 
             <p className="signup-text">
