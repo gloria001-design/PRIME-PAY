@@ -4,10 +4,10 @@ import { FaRegEye, FaRegEyeSlash, FaCheckCircle, FaRegCircle } from "react-icons
 import Swal from "sweetalert2";
 import axios from "axios";
 import "../css/Auth.css";
-import { EmailRegex, PasswordRequirements, BaseURL } from "../../lib/HighFunction";
+import { EmailRegex, PasswordRequirements } from "../../lib/HighFunction";
 
 const SignUp = () => {
-
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -75,7 +75,8 @@ const SignUp = () => {
 
   const handleValidationAndSubmit = async (e) => {
     e.preventDefault();
-
+const BaseURL=import.meta.env.VITE_BASE_URL;
+console.log("API_RESPONSE", BaseURL)
     const allConditionsMet = Passmeet.length && Passmeet.upper && Passmeet.lower && Passmeet.number && Passmeet.special;
     const fieldsEmpty = !userInfo.fullName || !userInfo.email || !userInfo.password || !userInfo.confirmPassword;
     const hasOtherErrors = UsernameErrorMsg.err || EmailerrorMsg.err || ConfirmPassworderrorMsg.err;
@@ -99,8 +100,11 @@ const SignUp = () => {
           password: userInfo.password
         };
 
-        const response = await axios.post(`${BaseURL}admin`, backendData);
-        // console.log("res:", response);
+       const response = await axios.post(
+  `${BaseURL}api/v1/admin`,
+  backendData
+);
+        console.log("res:", response);
 
         Swal.fire({
           title: "Success",
@@ -115,7 +119,7 @@ const SignUp = () => {
           password: "",
           confirmPassword: "",
         });
-
+ navigate("/verify-email", { state: { email: userInfo.email } });
       } catch (error) {
         console.log("err", error.response?.data);
         
@@ -253,6 +257,7 @@ const SignUp = () => {
               disabled={isLoading}
             >
               {isLoading ? "Signing up..." : "Sign up"}
+            
             </button>
 
             <p className="signup-text">
