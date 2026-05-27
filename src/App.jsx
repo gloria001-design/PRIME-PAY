@@ -10,7 +10,7 @@ import ForgotPassword from './pages/Auth/ForgetPassword';
 import VerifyEmail from './pages/Auth/VerifyEmail';
 import VerificationCode from './pages/Auth/VerificationCode';
 import ResetPassword from './pages/Auth/ResetPassword';
-import { ScrollToTop } from './components/HighFunction';
+import { ScrollToTop } from '../src/lib/HighFunction';
 import AnalyticsDashboard from './pages/Admin/AnalyticsDashboard';
 import AdminLayout from "./pages/Admin/AdminLayout"; 
 import DashboardOverview from "./pages/Admin/AdminDashboard"; 
