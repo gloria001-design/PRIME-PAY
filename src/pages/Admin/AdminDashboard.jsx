@@ -16,7 +16,7 @@ const AdminDashboard = () => {
       const incomingData = response.data.data || response.data || [];
       setRecentOrders(incomingData.reverse());
     } catch (error) {
-      // console.log("Err:", error);
+      console.log("Err", error);
     } finally {
       setIsLoading(false);
     }

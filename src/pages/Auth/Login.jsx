@@ -1,4 +1,3 @@
-// Login.jsx
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,12 +9,10 @@ import {
   setError, 
   clearError 
 } from "../../redux/authSlice";
+import { BaseURL } from "../../lib/HighFunction";
 import "../css/Auth.css";
 
-const API_BASE_URL = "https://prime-press-laundary.onrender.com/api/v1";
-
 const Login = () => {
-  
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
@@ -36,15 +33,14 @@ const Login = () => {
     dispatch(clearError());
     
     try {
-      const response = await axios.post(`${API_BASE_URL}/login`, {
+      const response = await axios.post(`${BaseURL}login`, {
         email,
         password
       });
       
-      console.log("Login response:", response.data);
-      
       if (response.data.token) {
         dispatch(updateToken(response.data.token));
+        localStorage.setItem("adminToken", response.data.token);
       }
       
       if (response.data.user) {
@@ -54,22 +50,18 @@ const Login = () => {
       navigate("/admin/dashboard");
       
     } catch (error) {
-      console.error("Login error:", error.response?.data);
       const errorMessage = error.response?.data?.message || "Login failed. Please try again.";
  
       if (errorMessage.toLowerCase().includes("verify")) {
         dispatch(setError("Please verify your email first. Sending new verification code..."));
         
         try {
-       
-          await axios.post(`${API_BASE_URL}/resend-otp`, { email });
-          console.log("New OTP sent successfully to:", email);
+          await axios.post(`${BaseURL}resend-otp`, { email });
           
           setTimeout(() => {
             navigate("/verify-email", { state: { email: email, autoSend: true } });
           }, 2000);
         } catch (otpError) {
-          console.error("Failed to send OTP:", otpError.response?.data);
           setTimeout(() => {
             navigate("/verify-email", { state: { email: email, autoSend: false } });
           }, 2000);
