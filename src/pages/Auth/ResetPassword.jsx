@@ -5,15 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { setLoading, setError, clearError, logout } from "../../redux/authSlice";
+import { BaseURL } from "../../lib/HighFunction";
 import "../css/Auth.css";
-
-const API_BASE_URL = "https://prime-press-laundary.onrender.com/api/v1";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  
 
   const email = location.state?.email || "";
   
@@ -25,17 +23,14 @@ const ResetPassword = () => {
   
   const { loading, error } = useSelector((state) => state.auth);
 
-
   useEffect(() => {
     dispatch(clearError());
-    
     setIsSubmitting(false);
   }, [dispatch]);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
     
-  
     if (!password || !confirmPassword) {
       dispatch(setError("Please fill in all fields"));
       return;
@@ -56,14 +51,13 @@ const ResetPassword = () => {
       return;
     }
     
-  
     if (isSubmitting) return;
     
     setIsSubmitting(true);
     dispatch(clearError());
     
     try {
-      const response = await axios.post(`${API_BASE_URL}/reset-password`, {
+      const response = await axios.post(`${BaseURL}/reset-password`, {
         email: email,
         password: password
       });
@@ -72,9 +66,7 @@ const ResetPassword = () => {
      
       dispatch(logout());
       
-   
       alert("Password reset successful! Please login with your new password.");
-
       navigate("/login", { replace: true });
       
     } catch (error) {
@@ -82,12 +74,9 @@ const ResetPassword = () => {
       const errorMessage = error.response?.data?.message || "Failed to reset password. Please try again.";
       dispatch(setError(errorMessage));
       setIsSubmitting(false);
-    } finally {
-      
     }
   };
 
-  // If no email, show error
   if (!email) {
     return (
       <div className="signup-holder">

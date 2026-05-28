@@ -1,4 +1,6 @@
-import { Link, useLocation, Outlet } from 'react-router-dom';
+import { Link, useLocation, Outlet, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from "../../redux/authSlice"
 
 import logo_image_file from '../../assets/Logo.png';
 import dashboard_icon from '../../assets/Layout dashboard.png';
@@ -13,6 +15,8 @@ import "./AdminCssFile/AdminLayout.css";
 
 const AdminLayout = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const is_active = (path) => location.pathname === path ? 'active' : '';
 
@@ -23,6 +27,16 @@ const AdminLayout = () => {
     if (location.pathname.includes('/admin/analytics')) return 'Review Analytics';
     if (location.pathname.includes('/admin/settings')) return 'Settings';
     return 'Admin Workspace';
+  };
+
+  const handleLogout = () => {
+  
+    dispatch(logout());
+
+    localStorage.removeItem("persist:root");
+    localStorage.removeItem("token");
+
+    navigate("/");
   };
 
   return (
@@ -59,7 +73,7 @@ const AdminLayout = () => {
         </nav>
         
         <div className="sidebar_footer">
-          <button className="logout_btn">
+          <button className="logout_btn" onClick={handleLogout} style={{ cursor: "pointer" }}>
             <img src={logout_icon} alt="" className="nav_icon_img" /> Logout
           </button>
         </div>

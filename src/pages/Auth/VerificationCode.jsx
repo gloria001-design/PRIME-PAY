@@ -1,23 +1,20 @@
-// VerificationCode.jsx
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setLoading, setError, clearError } from "../../redux/authSlice";
+import { BaseURL } from "../../lib/HighFunction";
 import "../css/Auth.css";
-
-const API_BASE_URL = "https://prime-press-laundary.onrender.com/api/v1";
 
 const VerificationCode = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
   
-
   const email = location.state?.email || "";
   
   const [verificationCode, setVerificationCode] = useState("");
-  const [timer, setTimer] = useState(180); // 3 minutes countdown
+  const [timer, setTimer] = useState(180);
   const [canResend, setCanResend] = useState(false);
   
   const { loading, error } = useSelector((state) => state.auth);
@@ -73,8 +70,7 @@ const VerificationCode = () => {
     dispatch(clearError());
     
     try {
-      
-      const response = await axios.post(`${API_BASE_URL}/forgot-password`, {
+      const response = await axios.post(`${BaseURL}/forgot-password`, {
         email: email
       });
       
@@ -135,7 +131,6 @@ const VerificationCode = () => {
               placeholder="Enter 6-digit code"
               value={verificationCode}
               onChange={(e) => {
-           
                 const value = e.target.value.replace(/[^0-9]/g, "").slice(0, 6);
                 setVerificationCode(value);
               }}

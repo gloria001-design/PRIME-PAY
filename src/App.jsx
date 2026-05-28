@@ -17,6 +17,7 @@ import DashboardOverview from "./pages/Admin/AdminDashboard";
 import OrdersPage from "./pages/Admin/Orders";
 import Customers from "./pages/Admin/Customers";
 import NotFoundPage from "./pages/404Page";
+import PrivateRoute from '../src/lib/Private';
 
 const App = () => {
   return (
@@ -37,12 +38,14 @@ const App = () => {
         <Route path="/verification-code" element={<VerificationCode />} />
         <Route path="/reset-password" element={<ResetPassword />} />
 
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<DashboardOverview />} />
-          <Route path="orders" element={<OrdersPage />} />
-          <Route path="customers" element={<Customers />} />
-          <Route path="analytics" element={<AnalyticsDashboard />} />
-          <Route path="settings" element={<div style={{ padding: "20px" }}><h2>Settings Content Placeholder</h2></div>} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="dashboard" element={<DashboardOverview />} />
+            <Route path="orders" element={<OrdersPage />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="analytics" element={<AnalyticsDashboard />} />
+            <Route path="settings" element={<div style={{ padding: "20px" }}><h2>Settings</h2></div>} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
