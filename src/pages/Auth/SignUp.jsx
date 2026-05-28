@@ -1,13 +1,15 @@
+import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash, FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axios from "axios";
 import "../css/Auth.css";
-import { EmailRegex, PasswordRequirements } from "../../lib/HighFunction";
+import { EmailRegex, PasswordRequirements, BaseURL } from "../../lib/HighFunction";
 
 const SignUp = () => {
   const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -75,8 +77,7 @@ const SignUp = () => {
 
   const handleValidationAndSubmit = async (e) => {
     e.preventDefault();
-const BaseURL=import.meta.env.VITE_BASE_URL;
-console.log("API_RESPONSE", BaseURL)
+
     const allConditionsMet = Passmeet.length && Passmeet.upper && Passmeet.lower && Passmeet.number && Passmeet.special;
     const fieldsEmpty = !userInfo.fullName || !userInfo.email || !userInfo.password || !userInfo.confirmPassword;
     const hasOtherErrors = UsernameErrorMsg.err || EmailerrorMsg.err || ConfirmPassworderrorMsg.err;
@@ -100,18 +101,16 @@ console.log("API_RESPONSE", BaseURL)
           password: userInfo.password
         };
 
-       const response = await axios.post(
-  `${BaseURL}api/v1/admin`,
-  backendData
-);
-        console.log("res:", response);
+        const response = await axios.post(`${BaseURL}admin`, backendData);
 
-        Swal.fire({
+        await Swal.fire({
           title: "Success",
-          text: "Registration successful!",
+          text: "Registration successful! Please verify your email.",
           icon: "success",
           confirmButtonColor: "#008d94"
         });
+
+        const userEmailAddress = userInfo.email;
 
         setUserInfo({
           fullName: "",
@@ -119,13 +118,15 @@ console.log("API_RESPONSE", BaseURL)
           password: "",
           confirmPassword: "",
         });
- navigate("/verify-email", { state: { email: userInfo.email } });
+
+        navigate("/verify-email", { state: { email: userEmailAddress } });
+
       } catch (error) {
-        console.log("err", error.response?.data);
+     
         
         Swal.fire({
           title: "Registration Failed",
-          text: error.response?.data?.message,
+          text: "An error occurred during signup.",
           icon: "error",
           confirmButtonColor: "#008d94"
         });
@@ -257,7 +258,6 @@ console.log("API_RESPONSE", BaseURL)
               disabled={isLoading}
             >
               {isLoading ? "Signing up..." : "Sign up"}
-            
             </button>
 
             <p className="signup-text">

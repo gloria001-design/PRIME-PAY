@@ -1,4 +1,4 @@
-// VerifyEmail.jsx
+import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,8 +13,7 @@ import {
   clearError 
 } from "../../redux/authSlice";
 import "../css/Auth.css";
-
-const API_BASE_URL = "https://prime-press-laundary.onrender.com/api/v1";
+import { BaseURL } from "../../lib/HighFunction";
 
 const VerifyEmail = () => {
   const navigate = useNavigate();
@@ -58,14 +57,13 @@ const VerifyEmail = () => {
     }
   };
 
-  const handleKeyDown = (index, e) => {
+  const handle遊eyDown = (index, e) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       const prevInput = document.getElementById(`otp-${index - 1}`);
       prevInput?.focus();
     }
   };
 
-  // Fixed: Actual API call for verification
   const handleVerify = async () => {
     const otpCode = otp.join("");
     
@@ -79,10 +77,10 @@ const VerifyEmail = () => {
       return;
     }
     
-    dispatch(verifyAdmin()); // Set loading to true
+    dispatch(verifyAdmin());
     
     try {
-      const response = await axios.post(`${API_BASE_URL}/admin/verify`, {
+      const response = await axios.post(`${BaseURL}admin/verify`, {
         email: email,
         otp: otpCode
       });
@@ -100,7 +98,6 @@ const VerifyEmail = () => {
     }
   };
 
-
   const handleResendOTP = async () => {
     if (!canResend) {
       alert(`Please wait ${formatTime(timer)} before requesting another code`);
@@ -115,7 +112,7 @@ const VerifyEmail = () => {
     dispatch(resendOTP());
     
     try {
-      const response = await axios.post(`${API_BASE_URL}/resend-otp`, {
+      const response = await axios.post(`${BaseURL}resend-otp`, {
         email: email
       });
       
@@ -123,7 +120,6 @@ const VerifyEmail = () => {
       dispatch(resendOTPSuccess());
       alert("A new OTP code has been sent to your email!");
       
- 
       setTimer(180);
       setCanResend(false);
       setOtp(["", "", "", "", "", ""]);
@@ -171,7 +167,7 @@ const VerifyEmail = () => {
                   maxLength="1"
                   value={digit}
                   onChange={(e) => handleOtpChange(index, e.target.value)}
-                  onKeyDown={(e) => handleKeyDown(index, e)}
+                  onKeyDown={(e) => handle遊eyDown(index, e)}
                   disabled={loading}
                   autoFocus={index === 0}
                 />

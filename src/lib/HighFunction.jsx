@@ -23,4 +23,4 @@ export const PasswordRequirements = (password) => {
   };
 };
 
-// export const BaseURL = import.meta.env.VITE_BASE_URL;
+export const BaseURL = import.meta.env.VITE_BASE_URL;
