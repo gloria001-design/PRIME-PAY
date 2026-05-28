@@ -43,26 +43,14 @@ const BookingSection = () => {
 
       const parts = bookingInfo.dateAndTime.split("T");
       const formattedDate = `${parts[0]} ${parts[1]}`;
-      
-      // const parts = bookingInfo.dateAndTime.split("T");
-      // const datePieces = parts[0].split("-");
-      // const timePieces = parts[1].split(":");
-      // let hour = Number(timePieces[0]);
-      // const ampm = hour >= 12 ? " PM" : " AM";
-      // hour = hour % 12 || 12;
-      // const formattedHour = String(hour).padStart(2, "0");
-      // const formattedDate = `${datePieces[2]}/${datePieces[1]}/${datePieces[0]} ${formattedHour}:${timePieces[1]}${ampm}`;
 
       const finalPayload = {
-        ...bookingInfo,
-        dateAndTime: formattedDate,
+                ...bookingInfo,
+                dateAndTime: formattedDate,
         phoneNumber: String(bookingInfo.phoneNumber)
       };
 
-      // console.log("TESTING VALIDATOR PATTERN:", finalPayload);
-
       const response = await axios.post(`${BaseURL}booking`, finalPayload);
-      console.log("BACKEND SUCCESS INFO:", response);
 
       Swal.fire({
         title: "Success",
@@ -80,11 +68,11 @@ const BookingSection = () => {
       });
 
     } catch (error) {
-      // console.log("BACKEND ERROR INFO:", error);
+    
       
       Swal.fire({
         title: "Booking Failed",
-        text: "error.response?.data?.message ",
+        text: error.response?.data?.message,
         icon: "error",
         confirmButtonColor: "#008d94"
       });

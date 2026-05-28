@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash, FaCheckCircle, FaRegCircle } from "react-icons/fa";
@@ -7,6 +8,7 @@ import "../css/Auth.css";
 import { EmailRegex, PasswordRequirements, BaseURL } from "../../lib/HighFunction";
 
 const SignUp = () => {
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -100,14 +102,15 @@ const SignUp = () => {
         };
 
         const response = await axios.post(`${BaseURL}admin`, backendData);
-        // console.log("res:", response);
 
-        Swal.fire({
+        await Swal.fire({
           title: "Success",
-          text: "Registration successful!",
+          text: "Registration successful! Please verify your email.",
           icon: "success",
           confirmButtonColor: "#008d94"
         });
+
+        const userEmailAddress = userInfo.email;
 
         setUserInfo({
           fullName: "",
@@ -116,12 +119,14 @@ const SignUp = () => {
           confirmPassword: "",
         });
 
+        navigate("/verify-email", { state: { email: userEmailAddress } });
+
       } catch (error) {
-        console.log("err", error.response?.data);
+     
         
         Swal.fire({
           title: "Registration Failed",
-          text: error.response?.data?.message,
+          text: "An error occurred during signup.",
           icon: "error",
           confirmButtonColor: "#008d94"
         });
