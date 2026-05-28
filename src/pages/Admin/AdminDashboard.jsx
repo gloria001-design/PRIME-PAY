@@ -19,12 +19,12 @@ const AdminDashboard = () => {
   ];
 
   const getStatusClass = (status) => status.toLowerCase().replace(" ", "_");
-
+const storedName = localStorage.getItem("Name");
   return (
     <div className="dashboard_view">
       <div className="dashboard_welcome_header">
         <div>
-          <h1>Welcome back, Admin</h1>
+          <h1>Welcome back,{storedName}</h1>
           <p>Here is what's happening with your laundry facility today.</p>
         </div>
         <div className="header_action_buttons">

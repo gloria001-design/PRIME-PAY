@@ -104,6 +104,7 @@ console.log("API_RESPONSE", BaseURL)
   `${BaseURL}api/v1/admin`,
   backendData
 );
+ localStorage.setItem("Name",backendData.fullName); 
         console.log("res:", response);
 
         Swal.fire({
