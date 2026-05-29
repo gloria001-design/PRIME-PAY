@@ -36,7 +36,7 @@ const AdminLayout = () => {
     localStorage.removeItem("persist:root");
     localStorage.removeItem("token");
 
-    navigate("/");
+    navigate("/login");
   };
 const storedName = localStorage.getItem("Name");
   return (
