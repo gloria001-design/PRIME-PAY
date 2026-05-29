@@ -1,12 +1,10 @@
-// ForgotPassword.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setLoading, setError, clearError } from "../../redux/authSlice";
+import { BaseURL } from "../../lib/HighFunction";
 import "../css/Auth.css";
-
-const API_BASE_URL = "https://prime-press-laundary.onrender.com/api/v1";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -23,7 +21,6 @@ const ForgotPassword = () => {
       return;
     }
     
-  
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       dispatch(setError("Please enter a valid email address"));
@@ -34,13 +31,10 @@ const ForgotPassword = () => {
     dispatch(clearError());
     
     try {
-      const response = await axios.post(`${API_BASE_URL}/forgot-password`, {
+      const response = await axios.post(`${BaseURL}forgot-password`, {
         email: email
       });
       
-      // console.log("Forgot password response:", response.data);
-      
-  
       navigate("/verification-code", { state: { email: email } });
       
     } catch (error) {

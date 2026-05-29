@@ -23,4 +23,16 @@ export const PasswordRequirements = (password) => {
   };
 };
 
-// export const BaseURL = import.meta.env.VITE_BASE_URL;
+export const BaseURL = import.meta.env.VITE_BASE_URL;
+
+export const Loading = () => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    fontSize: '20px'
+  }}>
+    Loading...
+  </div>
+)

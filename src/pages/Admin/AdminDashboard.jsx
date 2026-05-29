@@ -1,99 +1,157 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { FaFileInvoice, FaSync, FaCheckCircle, FaLayerGroup, FaChevronRight, FaEllipsisV } from "react-icons/fa";
+import { BaseURL } from "../../lib/HighFunction";
 import "./AdminCssFile/AdminDashboard.css";
 
 const AdminDashboard = () => {
-  const stats = [
-    { title: "New Requests", count: 12, label: "Today", change: "+4% from last week", icon: <FaFileInvoice />, iconClass: "icon_new" },
-    { title: "Washing in Progress", count: 24, label: "Ongoing", change: "+4% from last week", icon: <FaSync />, iconClass: "icon_washing" },
-    { title: "Ready for Delivery", count: "08", label: "Immediate", change: "+4% from last week", icon: <FaCheckCircle />, iconClass: "icon_ready" },
-    { title: "Completed Today", count: 156, label: "Total", change: "+4% from last week", icon: <FaLayerGroup />, iconClass: "icon_completed" }
-  ];
-
-  const recentOrders = [
-    { id: "ORD-8821", customer: "Sarah Jenkins", address: "122 Oakwood Dr, Springfield", date: "Mar 24, 2026", status: "New Request" },
-    { id: "ORD-8819", customer: "Michael Ross", address: "45 Maple Ave, Heights", date: "Mar 23, 2026", status: "Washing" },
-    { id: "ORD-8815", customer: "Emily Chen", address: "882 Broadway, Suite 4", date: "Mar 23, 2024", status: "Ready" },
-    { id: "ORD-8812", customer: "Robert Miller", address: "10-B Industrial Park", date: "Mar 22, 2024", status: "Picked Up" },
-    { id: "ORD-8808", customer: "Jessica Taylor", address: "712 Pine Street, Apt 12", date: "Mar 21, 2024", status: "Delivered" }
-  ];
-
-  const getStatusClass = (status) => status.toLowerCase().replace(" ", "_");
+  const [recentOrders, setRecentOrders] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 const storedName = localStorage.getItem("Name");
+  const fetchLiveBookings = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(`${BaseURL}bookings`);
+      const incomingData = response.data.data || response.data || [];
+      setRecentOrders(incomingData.reverse());
+    } catch (error) {
+      console.log("Err", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLiveBookings();
+  }, []);
+
   return (
     <div className="dashboard_view">
+      
       <div className="dashboard_welcome_header">
         <div>
-          <h1>Welcome back,{storedName}</h1>
+          <h1>Welcome back, {storedName}!</h1>
           <p>Here is what's happening with your laundry facility today.</p>
         </div>
         <div className="header_action_buttons">
-          <button className="export_btn">Export Report</button>
+          <button className="export_btn" onClick={fetchLiveBookings} disabled={isLoading}>
+            {isLoading ? "Refreshing..." : "Refresh Data"}
+          </button>
           <button className="new_order_btn">New Order</button>
         </div>
       </div>
 
       <div className="stats_grid">
-        {stats.map((item, index) => (
-          <div className="stat_card" key={index}>
-            <div className="stat_card_top">
-              <span className={`stat_icon ${item.iconClass}`}>{item.icon}</span>
-              <span className="stat_label_badge">{item.label}</span>
-            </div>
-            <div className="stat_card_middle">
-              <h3>{item.title}</h3>
-              <h2>{item.count}</h2>
-            </div>
-            <p className="stat_card_change">{item.change}</p>
+        
+        <div className="stat_card">
+          <div className="stat_card_top">
+            <span className="stat_icon icon_new"><FaFileInvoice /></span>
+            <span className="stat_label_badge">Live</span>
           </div>
-        ))}
+          <div className="stat_card_middle">
+            <h3>New Requests</h3>
+            <h2>{recentOrders.length}</h2>
+          </div>
+          <p className="stat_card_change">Updated just now</p>
+        </div>
+
+        <div className="stat_card">
+          <div className="stat_card_top">
+            <span className="stat_icon icon_washing"><FaSync /></span>
+            <span className="stat_label_badge">Ongoing</span>
+          </div>
+          <div className="stat_card_middle">
+            <h3>Washing in Progress</h3>
+            <h2>24</h2>
+          </div>
+          <p className="stat_card_change">+4% from last week</p>
+        </div>
+
+        <div className="stat_card">
+          <div className="stat_card_top">
+            <span className="stat_icon icon_ready"><FaCheckCircle /></span>
+            <span className="stat_label_badge">Immediate</span>
+          </div>
+          <div className="stat_card_middle">
+            <h3>Ready for Delivery</h3>
+            <h2>08</h2>
+          </div>
+          <p className="stat_card_change">+4% from last week</p>
+        </div>
+
+        <div className="stat_card">
+          <div className="stat_card_top">
+            <span className="stat_icon icon_completed"><FaLayerGroup /></span>
+            <span className="stat_label_badge">Total</span>
+          </div>
+          <div className="stat_card_middle">
+            <h3>Completed Today</h3>
+            <h2>156</h2>
+          </div>
+          <p className="stat_card_change">+4% from last week</p>
+        </div>
+
       </div>
 
       <div className="activity_card">
         <div className="card_filter_header">
           <div>
             <h3>Recent Orders</h3>
-            <p className="subtext">Latest transactions processed in the last 24 hours.</p>
+            <p className="subtext">Latest transactions processed live from database.</p>
           </div>
           <button className="view_all_link">View All Orders <FaChevronRight /></button>
         </div>
 
         <div className="table_responsive">
-          <table className="orders_table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Pickup Address</th>
-                <th>Pickup Date</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recentOrders.map((order) => (
-                <tr key={order.id}>
-                  <td className="order_id">{order.id}</td>
-                  <td className="customer_name_cell">{order.customer}</td>
-                  <td className="address_cell_text">{order.address}</td>
-                  <td className="date_cell_text">{order.date}</td>
-                  <td>
-                    <span className={`status_badge_dash ${getStatusClass(order.status)}`}>
-                      {order.status}
-                    </span>
-                  </td>
-                  <td>
-                    <div className="actions_cell">
-                      <button className="view_order_action_btn">View Order</button>
-                      <button className="menu_dot_btn"><FaEllipsisV /></button>
-                    </div>
-                  </td>
+          {isLoading && recentOrders.length === 0 ? (
+            <div style={{ padding: "30px", textAlign: "center", color: "#64748b" }}>Loading live records...</div>
+          ) : recentOrders.length === 0 ? (
+            <div style={{ padding: "30px", textAlign: "center", color: "#64748b" }}>No customer bookings found.</div>
+          ) : (
+            <table className="orders_table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Pickup Address</th>
+                  <th>Pickup Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {recentOrders.map((order, index) => (
+                  <tr key={order._id || index}>
+                    
+                    <td className="order_id">
+                      {order._id ? order._id.slice(-7).toUpperCase() : `ORD-${1000 + index}`}
+                    </td>
+                    
+                    <td className="customer_name_cell">{order.fullName}</td>
+                    <td className="address_cell_text">{order.address}</td>
+                    <td className="date_cell_text">{order.dateAndTime}</td>
+                    
+                    <td>
+                      <span className="status_badge_dash dynamic_new_request">
+                        {order.status || "New Request"}
+                      </span>
+                    </td>
+                    
+                    <td>
+                      <div className="actions_cell">
+                        <button className="view_order_action_btn">View Order</button>
+                        <button className="menu_dot_btn"><FaEllipsisV /></button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
+
     </div>
   );
 };
