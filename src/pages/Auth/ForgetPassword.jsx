@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     dispatch(clearError());
     
     try {
-      const response = await axios.post(`${BaseURL}/forgot-password`, {
+      const response = await axios.post(`${BaseURL}forgot-password`, {
         email: email
       });
       

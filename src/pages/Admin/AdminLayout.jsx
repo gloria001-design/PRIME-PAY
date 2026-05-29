@@ -38,7 +38,7 @@ const AdminLayout = () => {
 
     navigate("/");
   };
-
+const storedName = localStorage.getItem("Name");
   return (
     <div className="admin_layout">
       <aside className="admin_sidebar">
