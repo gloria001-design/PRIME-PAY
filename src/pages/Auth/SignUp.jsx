@@ -102,6 +102,7 @@ const SignUp = () => {
         };
 
         const response = await axios.post(`${BaseURL}admin`, backendData);
+        localStorage.setItem("Name", backendData.fullName);
 
         await Swal.fire({
           title: "Success",

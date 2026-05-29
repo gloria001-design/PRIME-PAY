@@ -38,7 +38,7 @@ const AdminLayout = () => {
 
     navigate("/");
   };
-
+const storedName = localStorage.getItem("Name");
   return (
     <div className="admin_layout">
       <aside className="admin_sidebar">
@@ -99,7 +99,7 @@ const AdminLayout = () => {
             </button>
             <div className="user_profile_trigger">
               <div className="user_info">
-                <span className="user_name">Admin User</span>
+                <span className="user_name">{storedName}</span>
                 <span className="user_role">Store Manager</span>
               </div>
               <img 
